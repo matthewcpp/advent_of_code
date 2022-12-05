@@ -51,6 +51,15 @@
         "xhash": "cpp",
         "unordered_set": "cpp",
         "array": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "map": "cpp",
+        "xtree": "cpp",
+        "regex": "cpp",
+        "locale": "cpp",
+        "xlocbuf": "cpp",
+        "xlocmes": "cpp",
+        "xlocmon": "cpp",
+        "xloctime": "cpp",
+        "deque": "cpp"
     }
 }
