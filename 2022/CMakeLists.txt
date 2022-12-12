@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 
 project(advent_of_code_2022 CXX)
+set(CMAKE_CXX_STANDARD 17)
 
 #define input directory for all targets
 add_compile_definitions(INPUT_DIRECTORY="${CMAKE_CURRENT_SOURCE_DIR}/input/")
@@ -18,12 +19,12 @@ add_executable(5-2 5-2.cpp)
 add_executable(6-1 6-1.cpp)
 add_executable(6-2 6-2.cpp)
 add_executable(7-1 7.hpp 7-1.cpp)
-set_property(TARGET 7-1 PROPERTY CXX_STANDARD 17)
 add_executable(7-2 7.hpp 7-2.cpp)
-set_property(TARGET 7-2 PROPERTY CXX_STANDARD 17)
 add_executable(8-1 8-1.cpp)
 add_executable(8-2 8-2.cpp)
 add_executable(9-1 9.hpp 9-1.cpp)
 add_executable(9-2 9.hpp 9-2.cpp)
 add_executable(10-1 10-1.cpp)
 add_executable(10-2 10-2.cpp)
+add_executable(11-1 11.hpp 11-1.cpp)
+add_executable(11-2 11.hpp 11-2.cpp)
