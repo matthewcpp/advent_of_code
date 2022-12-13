@@ -73,6 +73,9 @@
         "stop_token": "cpp",
         "thread": "cpp",
         "functional": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "any": "cpp",
+        "stack": "cpp",
+        "variant": "cpp"
     }
 }
