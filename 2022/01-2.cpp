@@ -7,8 +7,8 @@
 
 
 int main (int argc, char** argv) {
-    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "1.test.txt";
-    auto const input_file_path = std::string(INPUT_DIRECTORY) + "1.txt";
+    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "01.test.txt";
+    auto const input_file_path = std::string(INPUT_DIRECTORY) + "01.txt";
 
     std::ifstream input_file(input_file_path);
     if (!input_file)

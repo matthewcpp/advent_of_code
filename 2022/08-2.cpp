@@ -8,8 +8,8 @@
 uint32_t calc_senic_score(std::vector<std::vector<uint8_t>> const & grid, int x, int y);
 
 int main(int argc, char** argv) {
-    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "8.test.txt";
-    auto const input_file_path = std::string(INPUT_DIRECTORY) + "8.txt";
+    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "08.test.txt";
+    auto const input_file_path = std::string(INPUT_DIRECTORY) + "08.txt";
 
     std::vector<std::vector<uint8_t>> grid;
     std::string current_line;

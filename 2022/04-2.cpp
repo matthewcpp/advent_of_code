@@ -9,8 +9,8 @@
 bool overlaps(std::pair<uint32_t, uint32_t> const & a, std::pair<uint32_t, uint32_t> const & b);
 
 int main (int argc, char** argv) {
-    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "4.test.txt";
-    auto const input_file_path = std::string(INPUT_DIRECTORY) + "4.txt";
+    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "04.test.txt";
+    auto const input_file_path = std::string(INPUT_DIRECTORY) + "04.txt";
 
     std::ifstream input_file(input_file_path);
 

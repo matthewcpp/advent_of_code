@@ -1,11 +1,11 @@
 #include <iostream>
 #include <limits>
 
-#include "7.hpp"
+#include "07.hpp"
 
 int main(int argc, char** argv) {
-    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "7.test.txt";
-    auto const input_file_path = std::string(INPUT_DIRECTORY) + "7.txt";
+    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "07.test.txt";
+    auto const input_file_path = std::string(INPUT_DIRECTORY) + "07.txt";
 
     Parser parser(input_file_path);
     parser.parseInput();

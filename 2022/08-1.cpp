@@ -8,8 +8,8 @@
 #define HASH(y,x) (((y) << 32) | (x & 0xFFFFFFFF))
 
 int main(int argc, char** argv) {
-    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "8.test.txt";
-    auto const input_file_path = std::string(INPUT_DIRECTORY) + "8.txt";
+    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "08.test.txt";
+    auto const input_file_path = std::string(INPUT_DIRECTORY) + "08.txt";
 
     std::vector<std::string> grid;
     std::string current_line;

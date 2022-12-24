@@ -28,8 +28,8 @@ MoveType to_opponent_move(char val);
 MoveType to_player_move(char val);
 
 int main(int argc, char** argv) {
-    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "2.test.txt";
-    auto const input_file_path = std::string(INPUT_DIRECTORY) + "2.txt";
+    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "02.test.txt";
+    auto const input_file_path = std::string(INPUT_DIRECTORY) + "02.txt";
 
     std::ifstream input_file(input_file_path);
     uint32_t score = 0;

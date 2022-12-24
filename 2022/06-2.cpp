@@ -3,8 +3,8 @@
 #include <string>
 
 int main(int argc, char** argv) {
-    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "6.test.txt";
-    auto const input_file_path = std::string(INPUT_DIRECTORY) + "6.txt";
+    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "06.test.txt";
+    auto const input_file_path = std::string(INPUT_DIRECTORY) + "06.txt";
 
     std::ifstream input_file(input_file_path);
     std::string input_str;
@@ -19,8 +19,8 @@ int main(int argc, char** argv) {
                 }
             }
 
-            if (end - start == 3){
-                std::cout << end + 1 << '(' << input_str.substr(start, 4) << ')' << std::endl;
+            if (end - start == 13){
+                std::cout << end + 1 << '(' << input_str.substr(start, 14) << ')' << std::endl;
                 break;
             }
 

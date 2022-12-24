@@ -10,8 +10,8 @@
 uint32_t to_priority(char item);
 
 int main(int argc, char** argv) {
-    // auto const input_file_path = std::string(INPUT_DIRECTORY) + "3.test.txt";
-    auto const input_file_path = std::string(INPUT_DIRECTORY) + "3.txt";
+    // auto const input_file_path = std::string(INPUT_DIRECTORY) + "03.test.txt";
+    auto const input_file_path = std::string(INPUT_DIRECTORY) + "03.txt";
 
     std::ifstream input_file(input_file_path);
     std::unordered_set<char> compartment;

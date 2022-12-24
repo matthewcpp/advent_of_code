@@ -4,13 +4,13 @@
 #include <string>
 #include <unordered_set>
 
-#include "9.hpp"
+#include "09.hpp"
 
 void adjust_tail(Vec2 const & head, Vec2 & tail);
 
 int main(int argc, char** argv) {
-    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "9.test.txt";
-    auto const input_file_path = std::string(INPUT_DIRECTORY) + "9.txt";
+    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "09.test.txt";
+    auto const input_file_path = std::string(INPUT_DIRECTORY) + "09.txt";
 
     std::ifstream input_file(input_file_path);
     std::unordered_set<uint64_t> visited_locations;

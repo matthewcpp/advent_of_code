@@ -5,7 +5,7 @@
 #include <unordered_set>
 #include <vector>
 
-#include "9.hpp"
+#include "09.hpp"
 
 #define ROPE_LENGTH 10
 #define ROPE_TAIL ROPE_LENGTH - 1
@@ -13,8 +13,8 @@
 void update_rope(std::array<Vec2, ROPE_LENGTH> & rope, Vec2 const & direction);
 
 int main(int argc, char** argv) {
-    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "9.test2.txt";
-    auto const input_file_path = std::string(INPUT_DIRECTORY) + "9.txt";
+    //auto const input_file_path = std::string(INPUT_DIRECTORY) + "09.test2.txt";
+    auto const input_file_path = std::string(INPUT_DIRECTORY) + "09.txt";
 
     std::ifstream input_file(input_file_path);
     std::unordered_set<uint64_t> visited_locations;

@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <mutex>
 #include <thread>
 #include <vector>
 
@@ -61,7 +62,7 @@ private:
 
             for (size_t x = 0; x < grid_width; x ++) {
                 if (map.grid[y][x] == 'a') {
-                    starting_positions.emplace_back(x, y);
+                    starting_positions.emplace_back(static_cast<int>(x), static_cast<int>(y));
                 }
             }
         }
