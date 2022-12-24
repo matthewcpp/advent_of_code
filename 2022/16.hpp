@@ -21,6 +21,7 @@ struct Tunnels {
     using ValveNode = GraphType::Node;
 
     GraphType graph, filtered_graph;
+    FloydWarshall<GraphType> filtered_graph_distances;
     std::unordered_map<std::string, ValveNode*> valves;
     ValveNode* start_node;
     
@@ -111,6 +112,8 @@ private:
                 filtered_graph.nodes[i]->createEdge(filtered_graph.nodes[j].get(), source_distance);
             }
         }
+
+        filtered_graph_distances.computeDistances(filtered_graph);
     }
 };
 
