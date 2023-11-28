@@ -26,10 +26,10 @@ struct Graph {
         }
     };
 
-    using ValueType = typename Value;
-    using WeightType = typename Weight;
-    using NodeType = typename Node;
-    using EdgeType = typename Edge;
+    using ValueType = Value;
+    using WeightType = Weight;
+    using NodeType = Node;
+    using EdgeType = Edge;
 
     Node* createNode(Value const & val) {
         return nodes.emplace_back(std::make_unique<Node>(val)).get();

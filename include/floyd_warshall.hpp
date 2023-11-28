@@ -4,6 +4,7 @@
 
 #include <cstdint>
 #include <limits>
+#include <unordered_map>
 #include <vector>
 
 template<typename GraphType>
