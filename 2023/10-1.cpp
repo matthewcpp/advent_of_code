@@ -1,6 +1,7 @@
 #include <array>
 #include <fstream>
 #include <iostream>
+#include <limits>
 #include <string>
 #include <vector>
 
@@ -24,8 +25,10 @@ struct World {
     Vec2 start;
 };
 struct Path {
-    Path(const Vec2& current, const Vec2& direction) : current(current), direction(direction) {}
-    Vec2 current, direction;
+    Path() = default;
+    Path(const Vec2& current, const Vec2& direction) : direction(direction), steps(1, current) {}
+    Vec2 direction;
+    std::vector<Vec2> steps;
 };
 
 bool pos_is_valid(const World& world, const Vec2 target) {
@@ -102,7 +105,7 @@ Vec2 follow_path(const World& world, const Vec2& current, const Vec2& direction,
 bool loop_found(std::vector<Path>& active_paths) {
     for (int i = 0; i < active_paths.size(); i++) {
         for (int j = 0; j < active_paths.size(); j++) {
-            if (i != j && active_paths[i].current == active_paths[j].current) {
+            if (i != j && active_paths[i].steps.back() == active_paths[j].steps.back()) {
                 return true;
             }
         }
@@ -111,58 +114,67 @@ bool loop_found(std::vector<Path>& active_paths) {
     return false;
 }
 
-int main (int argc, char** argv) {
+World parse_world_map(const std::string& input_file_path) {
     World world;
+    std::ifstream file(input_file_path);
+    std::string line;
+    bool start_found = false;
+    while (std::getline(file, line)) {
+        world.grid.emplace_back(std::move(line));
+
+        if (start_found) {
+            continue;
+        }
+
+        auto start_index = world.grid.back().find('S');
+        if (start_index != std::string::npos) {
+            world.start.x = static_cast<int>(start_index);
+            world.start.y = static_cast<int>(world.grid.size() - 1);
+            start_found = true;
+        }
+    }
+
+    return world;
+}
+
+std::vector<Path> find_loop(const World& world) {
     std::vector<Path> paths, active_paths;
-
-    {
-        std::ifstream file(input_file_path);
-        std::string line;
-        bool start_found = false;
-        while (std::getline(file, line)) {
-            world.grid.emplace_back(std::move(line));
-
-            if (start_found) {
-                continue;
-            }
-
-            auto start_index = world.grid.back().find('S');
-            if (start_index != std::string::npos) {
-                world.start.x = static_cast<int>(start_index);
-                world.start.y = static_cast<int>(world.grid.size() - 1);
-                start_found = true;
-            }
-        }
-    }
-    {
-        static const std::array<Vec2, 4> directions = {{ {1, 0}, {-1, 0}, {0, 1}, {0, -1} }};
-        for (const auto& direction : directions) {
-            paths.emplace_back(world.start, direction);
-        }
+    
+    static const std::array<Vec2, 4> directions = {{ {1, 0}, {-1, 0}, {0, 1}, {0, -1} }};
+    for (const auto& direction : directions) {
+        paths.emplace_back(world.start, direction);
     }
 
-    uint64_t step_count = 1;
     for (;;) {
         active_paths.clear();
 
-        for (const auto& path : paths) {
-            auto target = path.current + path.direction;
-            auto new_direction = follow_path(world, path.current, path.direction, target);
+        for (auto& path : paths) {
+            auto target = path.steps.back() + path.direction;
+            auto new_direction = follow_path(world, path.steps.back(), path.direction, target);
 
             if (!new_direction.isZero()) {
-                active_paths.emplace_back(target, new_direction);
+                auto& active_path = active_paths.emplace_back();
+                active_path.direction = new_direction;
+                active_path.steps = std::move(path.steps);
+                active_path.steps.emplace_back(target);
             }
         }
 
-        if (loop_found(active_paths)) {
+        std::swap(paths, active_paths);
+
+        if (loop_found(paths)) {
             break;
         }
-
-        std::swap(paths, active_paths);
-        step_count += 1;
     }
 
-    std::cout << step_count << std::endl;
+    return paths;
+}
+
+int main (int argc, char** argv) {
+    World world = parse_world_map(input_file_path);
+    const auto loop_paths = find_loop(world);
+
+    std::cout << loop_paths[0].steps.size() - 1 << std::endl;
 
 
     return 0;
