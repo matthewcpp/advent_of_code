@@ -1,6 +1,6 @@
 {
     "cmake.configureArgs": [
-        "-DBUILD_YEAR=2023"
+        "-DBUILD_YEAR=2024"
     ],
     "files.associations": {
         "algorithm": "cpp",
