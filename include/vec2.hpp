@@ -1,5 +1,7 @@
 #pragma once
 
+#include "hash_combine.hpp"
+
 #include <stdint.h>
 
 template <typename T>
@@ -16,18 +18,32 @@ struct IntVec2{
     }
     
     IntVec2<T> operator- (const IntVec2& other) const { 
-        return IntVec<T>(x - other.x, y - other.y); 
+        return IntVec2<T>(x - other.x, y - other.y); 
     }
 
     IntVec2<T> operator+ (const IntVec2& other) const { 
-        return IntVec<T>(x + other.x, y + other.y); 
+        return IntVec2<T>(x + other.x, y + other.y); 
     }
+
     bool operator== (const IntVec2& other) const { 
         return x == other.x && y == other.y;
     }
 
+    bool operator!=(const IntVec2& other) const {
+        return !(*this == other);
+    }
+
     static T ManhattanDistance(const IntVec2<T>& a, const IntVec2<T>& b) {
         return std::abs(a.x - b.x) + std::abs(a.y - b.y);
+    }
+};
+
+template<typename T>
+struct std::hash<IntVec2<T>> {
+    size_t operator()(const IntVec2<T>& v) const {
+        size_t h = 0;
+        hash_combine(h, v.x, v.y);
+        return h;
     }
 };
 
