@@ -2,11 +2,12 @@
 
 #include "hash_combine.hpp"
 
+#include <ostream>
 #include <stdint.h>
 
 template <typename T>
 struct IntVec2{
-    using Type = typename T;
+    using Type = T;
 
     IntVec2() = default;
     IntVec2(T x, T y) : x(x), y(y) {}
@@ -17,19 +18,33 @@ struct IntVec2{
         return y != other.y ? y < other.y : x < other.x; 
     }
     
-    IntVec2<T> operator- (const IntVec2& other) const { 
+    IntVec2<T> operator- (const IntVec2<T>& other) const { 
         return IntVec2<T>(x - other.x, y - other.y); 
     }
 
-    IntVec2<T> operator+ (const IntVec2& other) const { 
+    IntVec2<T> operator-= (const IntVec2<T>& other) {
+        x -= other.x;
+        y -= other.y;
+
+        return *this;
+    }
+
+    IntVec2<T> operator+ (const IntVec2<T>& other) const { 
         return IntVec2<T>(x + other.x, y + other.y); 
     }
 
-    bool operator== (const IntVec2& other) const { 
+    IntVec2<T> operator+= (const IntVec2<T>& other) {
+        x += other.x;
+        y += other.y;
+
+        return *this;
+    }
+
+    bool operator== (const IntVec2<T>& other) const { 
         return x == other.x && y == other.y;
     }
 
-    bool operator!=(const IntVec2& other) const {
+    bool operator!=(const IntVec2<T>& other) const {
         return !(*this == other);
     }
 
@@ -46,6 +61,14 @@ struct std::hash<IntVec2<T>> {
         return h;
     }
 };
+
+template<typename T>
+std::ostream& operator << (std::ostream& stream, const IntVec2<T>& v) {
+    stream << '[' << v.x << ", " << v.y << ']';
+
+    return stream;
+}
+
 
 typedef IntVec2<int64_t> IVec2;
 typedef IntVec2<uint64_t> UVec2;
